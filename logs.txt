@@ -1,13 +1,83 @@
-adc294e add(delete post by ID endpoint)
-3be45cb add(update post by ID endpoint)
-3fb3b47 add(get  a post by ID endpoint)
-1553bc4 add(get create a post endpoint)
-5cc6027 add(get all posts endpoint)
-aadb2d6 add(post api routes)
-9a5131e add(post model)
-72398d9 add(create update user endpoint)
-50a97ca add(create user ndpoint)
-e9e399e add(get all users endoint)
-5c013fc add(class methods to user model)
-b98933b initial db migration
-4173c34 initial commit
+commit b347fb28ee68c2362db878507b43eb5689128e43
+Author: jod35 <jodestrevin@gmail.com>
+Date:   Thu Jul 30 13:43:05 2020 -0700
+
+    fix(add user_id to post resources)
+
+commit adc294e8189bd070c4795b3a80a1fbc317bb13af
+Author: jod35 <jodestrevin@gmail.com>
+Date:   Thu Jul 30 13:36:16 2020 -0700
+
+    add(delete post by ID endpoint)
+
+commit 3be45cb2c4a9e02670b086baa8525a4e247c2045
+Author: jod35 <jodestrevin@gmail.com>
+Date:   Thu Jul 30 13:23:25 2020 -0700
+
+    add(update post by ID endpoint)
+
+commit 3fb3b47a68b855a54b11123e5150e4d36ee4dcb7
+Author: jod35 <jodestrevin@gmail.com>
+Date:   Thu Jul 30 13:16:10 2020 -0700
+
+    add(get  a post by ID endpoint)
+
+commit 1553bc47a73c531d7630cedda16a2dab4701ef9f
+Author: jod35 <jodestrevin@gmail.com>
+Date:   Thu Jul 30 13:12:57 2020 -0700
+
+    add(get create a post endpoint)
+
+commit 5cc6027eebe204456acb34f33aec66b35d08c314
+Author: jod35 <jodestrevin@gmail.com>
+Date:   Thu Jul 30 12:44:27 2020 -0700
+
+    add(get all posts endpoint)
+
+commit aadb2d68ab2bd3aef25956bbbffee0463406d8c0
+Author: jod35 <jodestrevin@gmail.com>
+Date:   Thu Jul 30 12:24:55 2020 -0700
+
+    add(post api routes)
+
+commit 9a5131e2e8fde4a9e8a381aa04bcb4fc815838d8
+Author: jod35 <jodestrevin@gmail.com>
+Date:   Thu Jul 30 12:06:39 2020 -0700
+
+    add(post model)
+
+commit 72398d906963473ad1f8cc6df3fc8d752700aa3b
+Author: jod35 <jodestrevin@gmail.com>
+Date:   Thu Jul 30 05:58:56 2020 -0700
+
+    add(create update user endpoint)
+
+commit 50a97cabd38c00b97bcedec5f2a90a3ab136684c
+Author: jod35 <jodestrevin@gmail.com>
+Date:   Thu Jul 30 05:20:13 2020 -0700
+
+    add(create user ndpoint)
+
+commit e9e399e7070f590cfe8c41664dc763d18ee080f2
+Author: jod35 <jodestrevin@gmail.com>
+Date:   Thu Jul 30 05:01:04 2020 -0700
+
+    add(get all users endoint)
+
+commit 5c013fcbda509e9a95aba168b08c42553c817de4
+Author: jod35 <jodestrevin@gmail.com>
+Date:   Thu Jul 30 04:49:15 2020 -0700
+
+    add(class methods to user model)
+
+commit b98933b2af6205ead37a59deb2ac36b6f670e107
+Author: jod35 <jodestrevin@gmail.com>
+Date:   Thu Jul 30 04:26:41 2020 -0700
+
+    initial db migration
+
+commit 4173c3427a551bfd0f8273f878a6b7407c4c3e09
+Author: jod35 <jodestrevin@gmail.com>
+Date:   Thu Jul 30 04:22:53 2020 -0700
+
+    initial commit

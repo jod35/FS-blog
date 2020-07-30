@@ -20,7 +20,7 @@ class User(db.Model):
 
     def __repr__(self):
         return f'User {self.username}'
-
+    
     def hash_password(self,password):
         self.passwd_hash=generate_password_hash(self.passwd_hash)
 

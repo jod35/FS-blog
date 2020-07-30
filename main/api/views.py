@@ -226,3 +226,21 @@ def delete_post(id):
                  "Message":"Post Resource Deleted Successfully",
                  "post":post})
     )
+
+
+###############################
+######get posts by a user######
+###############################
+@api_bp.route('/posts/<user_id>')
+def get_posts_of_id(user_id):
+
+    fetch_posts=Post.query.filter_by(user_id=user_id).all()
+
+    posts=post_schema.dump(fetch_posts)
+
+    return make_response(
+        jsonify({
+            "Success":True,
+            "posts":posts
+        })
+    )

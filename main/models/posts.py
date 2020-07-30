@@ -24,6 +24,8 @@ class Post(db.Model):
         db.session.delete(self)
         db.session.commit()
 
+    
+
 class PostOutputSchema(ModelSchema):
     class Meta(ModelSchema.Meta):
         model=Post
