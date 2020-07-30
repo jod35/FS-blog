@@ -183,9 +183,30 @@ def get_post(id):
 ###################################
 ####### UPDATE post INFO###########
 ###################################
-@api_bp.route('/post/<id>')
+@api_bp.route('/post/<id>',methods=['PUT'])
 def update_post(id):
-    pass
+    post_to_update=Post.query.get_or_404(id)
+
+    data=request.get_json()
+
+    if data['title']:
+        post_to_update.title=data['title']
+    if data['content']:
+        post_to_update.content=data['content']
+    
+    db.session.add(post_to_update)
+    db.session.commit()
+
+    result=PostOutputSchema().dump(post_to_update)
+    return make_response(
+        jsonify(
+            {"message":"Post Update Successfully",
+             "Successfully":True,
+             "post":result
+             }
+        )
+    )
+
 
 ###################################
 #####DELETE A POST ################
