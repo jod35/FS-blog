@@ -138,7 +138,7 @@ def get_all_posts():
 
     return make_response(
         jsonify({"Success":True,
-                    "posts":posts})
+                    "posts":posts}),200
     )
 
 ####################################
@@ -156,7 +156,7 @@ def create_post():
     return make_response(
         jsonify({"message":"New Post Created Successfully",
                  "Success":True,
-                 "post":post})
+                 "post":post}),200
     )
 
 
@@ -166,7 +166,18 @@ def create_post():
 ###################################
 @api_bp.route('/post/<id>',methods=['GET'])
 def get_post(id):
-    pass
+    post=Post.query.get_or_404(id)
+
+    schema=PostOutputSchema()
+
+    result=schema.dump(post)
+
+    return make_response(
+        jsonify(
+            {"Success":True,
+            "post":result}
+        )
+    )
 
 
 ###################################
