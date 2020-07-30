@@ -1,5 +1,6 @@
 from flask import Flask,jsonify
 from .config import DevConfig
+from flask_jwt_extended import JWTManager
 from main.utils.database import db
 
 from flask_migrate import Migrate
@@ -9,7 +10,10 @@ app=Flask(__name__)
 
 app.config.from_object(DevConfig)
 
+jwt=JWTManager(app)
+
 db.init_app(app)
+
 migrate=Migrate(app,db)
 
 from main.api.views import api_bp

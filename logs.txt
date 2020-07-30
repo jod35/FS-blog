@@ -1,3 +1,9 @@
+commit a359bdbb047e5fac77c42c61fd38881930f1369a
+Author: jod35 <jodestrevin@gmail.com>
+Date:   Thu Jul 30 14:10:01 2020 -0700
+
+    add(route to get posts of a user)
+
 commit b347fb28ee68c2362db878507b43eb5689128e43
 Author: jod35 <jodestrevin@gmail.com>
 Date:   Thu Jul 30 13:43:05 2020 -0700

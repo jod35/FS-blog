@@ -2,13 +2,13 @@ from flask import Blueprint,jsonify,make_response,request
 from main.utils.database import db
 from main.models.users import User,UserOutputSchema
 from main.models.posts import Post,PostOutputSchema
+from flask_jwt_extended import jwt_required
 
 api_bp=Blueprint('api_bp',__name__)
+
 ##########################
 ###### WELCOME ###########
 ##########################
-
-
 @api_bp.route('/')
 def hello():
     return make_response(jsonify({"message":"Hey Welcome to the blog API" }),200)
@@ -34,6 +34,7 @@ def get_all_users():
 ###CREATE NEW USER ########
 ###########################
 @api_bp.route('/users',methods=['POST'])
+@jwt_required
 def create_new_user():
     data=request.get_json()
 
@@ -77,6 +78,7 @@ def get_single_user(id):
 ######CHANGE USERNAME ################
 ######################################
 @api_bp.route('/user/<id>',methods=['PUT'])
+@jwt_required
 def update_user_info(id):
     data=request.get_json()
 
@@ -104,6 +106,7 @@ def update_user_info(id):
 ###### DELETE USER ############
 ###############################
 @api_bp.route('/user/<id>',methods=['DELETE'])
+@jwt_required
 def delete_user(id):
     user_to_delete=User.query.get_or_404(id)
 
@@ -131,6 +134,7 @@ def delete_user(id):
 post_schema=PostOutputSchema(many=True)
 
 @api_bp.route('/posts',methods=['GET'])
+@jwt_required
 def get_all_posts():
     all_posts=Post.query.all()
 
@@ -145,6 +149,7 @@ def get_all_posts():
 #####CREATE A BOOK #################
 ####################################
 @api_bp.route('/posts',methods=['POST'])
+@jwt_required
 def create_post():
     data=request.get_json()
     schema=PostOutputSchema()
@@ -168,6 +173,7 @@ def create_post():
 ######GET POST BY ID ##############
 ###################################
 @api_bp.route('/post/<id>',methods=['GET'])
+@jwt_required
 def get_post(id):
     post=Post.query.get_or_404(id)
 
@@ -187,6 +193,7 @@ def get_post(id):
 ####### UPDATE post INFO###########
 ###################################
 @api_bp.route('/post/<id>',methods=['PUT'])
+@jwt_required
 def update_post(id):
     post_to_update=Post.query.get_or_404(id)
 
@@ -215,6 +222,7 @@ def update_post(id):
 #####DELETE A POST ################
 ###################################
 @api_bp.route('/post/<id>',methods=['DELETE'])
+@jwt_required
 def delete_post(id):
     post_to_delete=Post.query.get_or_404(id)
 
@@ -232,6 +240,7 @@ def delete_post(id):
 ######get posts by a user######
 ###############################
 @api_bp.route('/posts/<user_id>')
+@jwt_required
 def get_posts_of_id(user_id):
 
     fetch_posts=Post.query.filter_by(user_id=user_id).all()
@@ -244,3 +253,5 @@ def get_posts_of_id(user_id):
             "posts":posts
         })
     )
+
+
