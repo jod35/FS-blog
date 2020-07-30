@@ -25,11 +25,15 @@ def authenticate_user():
             )
         
         if user_candidate and user_candidate.check_password(data['password']):
+
             access_token=create_access_token(identity=data['username'])
-            message="Logged In as {} with access token {}".format(data['username'],access_token)
+
+            message="Logged In as {}".format(data['username'])
+
             return make_response(
                 jsonify({
                     "message":message,
+                    "access_token":access_token,
                     "Success":True,
                 })
             )
