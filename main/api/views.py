@@ -1,6 +1,6 @@
 from flask import Blueprint,jsonify,make_response,request
 from main.utils.database import db
-from .models import User,UserOutputSchema
+from main.models.users import User,UserOutputSchema
 
 api_bp=Blueprint('api_bp',__name__)
 
@@ -85,5 +85,15 @@ def update_user_info(id):
 
 @api_bp.route('/user/<id>',methods=['DELETE'])
 def delete_user(id):
-    pass
+    user_to_delete=User.query.get_or_404(id)
+
+    user_to_delete.delete()
+
+    user=UserOutputSchema().dump(user_to_delete)
+
+    return make_response(
+        jsonify({"message":"User Deleted Successfully",
+                "user":user})
+    )
+
 

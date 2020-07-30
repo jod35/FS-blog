@@ -3,7 +3,8 @@ from .config import DevConfig
 from main.utils.database import db
 from main.api.views import api_bp
 from main.auth.views import auth_bp
-from main.api.models import User as user_model
+from main.models.users import User as user_model
+from main.models.posts import Post as post_model
 from flask_migrate import Migrate
 
 
@@ -32,7 +33,8 @@ def make_shell_context():
     return {
         'db':db,
         'user_model':user_model,
-        'app':app
+        'app':app,
+        'post_model':post_model
     }
 
 
