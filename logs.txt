@@ -1,3 +1,9 @@
+commit 620a476fbedf2204e8b50893bd659035df0438d6
+Author: jod35 <jodestrevin@gmail.com>
+Date:   Thu Jul 30 14:36:13 2020 -0700
+
+    add(added JWT authentication)
+
 commit a359bdbb047e5fac77c42c61fd38881930f1369a
 Author: jod35 <jodestrevin@gmail.com>
 Date:   Thu Jul 30 14:10:01 2020 -0700

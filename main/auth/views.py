@@ -14,24 +14,29 @@ def hello():
 
 @auth_bp.route('/signin',methods=['POST'])
 def authenticate_user():
-    data=request.get_json()
+    try:
+        data=request.get_json()
 
-    username=data['username']
+        user_candidate=User.query.filter_by(username=data['username']).first()
 
-    password=data['password']
-
-    user=User.query.filter_by(username=username).first()
-
-    if user and user.check_password(password):
-
-        access_token=create_access_token(identity=username)
-
-        message="Logged In as {},your access token is {}".format(username,access_token)
-        
-
-        return make_response(
-            jsonify(
-                {"message":message,
-                "Sucess":True}
+        if not user_candidate:
+            return make_response(
+                jsonify({"message":"Invalid Username"})
             )
+        
+        if user_candidate and user_candidate.check_password(data['password']):
+            access_token=create_access_token(identity=data['username'])
+            message="Logged In as {} with access token {}".format(data['username'],access_token)
+            return make_response(
+                jsonify({
+                    "message":message,
+                    "Success":True,
+                })
+            )
+    except:
+        return make_response(
+            jsonify({
+                "message":"Invalid Login",
+                "Success":False
+            }),401
         )
