@@ -211,6 +211,15 @@ def update_post(id):
 ###################################
 #####DELETE A POST ################
 ###################################
-@api_bp.route('/post/<id>')
+@api_bp.route('/post/<id>',methods=['DELETE'])
 def delete_post(id):
-    pass
+    post_to_delete=Post.query.get_or_404(id)
+
+    post_to_delete.delete()
+
+    post=PostOutputSchema().dump(post_to_delete)
+    return make_response(
+        jsonify({"Success":True,
+                 "Message":"Post Resource Deleted Successfully",
+                 "post":post})
+    )
