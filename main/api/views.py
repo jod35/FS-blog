@@ -149,6 +149,9 @@ def create_post():
     data=request.get_json()
     schema=PostOutputSchema()
     new_post=Post(title=data['title'],content=data['content'])
+
+    if data['user_id']:
+        new_post.user_id=data['user_id']
     new_post.create()
 
     post=schema.dump(new_post)

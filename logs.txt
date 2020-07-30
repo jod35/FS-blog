@@ -1,0 +1,13 @@
+adc294e add(delete post by ID endpoint)
+3be45cb add(update post by ID endpoint)
+3fb3b47 add(get  a post by ID endpoint)
+1553bc4 add(get create a post endpoint)
+5cc6027 add(get all posts endpoint)
+aadb2d6 add(post api routes)
+9a5131e add(post model)
+72398d9 add(create update user endpoint)
+50a97ca add(create user ndpoint)
+e9e399e add(get all users endoint)
+5c013fc add(class methods to user model)
+b98933b initial db migration
+4173c34 initial commit

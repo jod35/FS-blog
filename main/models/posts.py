@@ -31,7 +31,7 @@ class PostOutputSchema(ModelSchema):
 
     title=fields.String(required=True)
     content=fields.String(required=True)
-
+    user_id=fields.Integer()
 
 
 
