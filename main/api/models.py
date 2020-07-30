@@ -30,6 +30,10 @@ class User(db.Model):
         db.session.add(self)
         db.session.commit()
 
+    def delete(self):
+        db.session.delete(self)
+        db.session.commit()
+
 class UserOutputSchema(ModelSchema):
     class Meta(ModelSchema.Meta):
         model=User

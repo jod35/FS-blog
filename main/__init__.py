@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask,jsonify
 from .config import DevConfig
 from main.utils.database import db
 from main.api.views import api_bp
@@ -19,13 +19,13 @@ migrate=Migrate(app,db)
 app.register_blueprint(auth_bp,url_prefix='/auth')
 app.register_blueprint(api_bp,url_prefix='/api')
 
-@app.errorhandler(400)
+@app.errorhandler(404)
 def not_found(error):
-    return "Page not found"
+    return jsonify({"message":"Resource Not Found"})
     
 @app.errorhandler(500)
 def internal_error(error):
-    return "Something went wrong"
+    return jsonify({"message":"Oops, Something went wrong!"})
 
 @app.shell_context_processor
 def make_shell_context():
