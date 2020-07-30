@@ -21,7 +21,26 @@ def get_all_users():
 
 @api_bp.route('/users',methods=['POST'])
 def create_new_user():
-    pass
+    data=request.get_json()
+
+    new_user=User(username=data['username'],
+                    email=data['email'],
+                    passwd_hash=data['passwd_hash']    
+                                      )
+    new_user.hash_password(new_user.passwd_hash)
+
+    new_user.create()
+
+    user_schema=UserOutputSchema()
+
+    user=user_schema.dump(new_user)
+    
+    return make_response(
+        jsonify({"message":"User Resource Created Successfully",
+                "Success":True,
+                "user":user})
+    )
+
 
 @api_bp.route('/user/<id>',methods=['GET'])
 def get_single_user(id):

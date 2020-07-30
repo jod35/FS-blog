@@ -19,11 +19,11 @@ class User(db.Model):
     def __repr__(self):
         return f'User {self.username}'
 
-    def hash_password(self):
-        self.password=generate_password_hash(self.password)
+    def hash_password(self,password):
+        self.passwd_hash=generate_password_hash(self.passwd_hash)
 
     def check_password(self,password):
-        return check_password_hash(self.password,password)
+        return check_password_hash(self.passwd_hash,password)
 
 
     def create(self):
