@@ -4,7 +4,6 @@ from main.utils.database import db
 from main.api.views import api_bp
 from main.auth.views import auth_bp
 from main.api.models import User as user_model
-from main.utils.migrations import migrate
 from flask_migrate import Migrate
 
 
