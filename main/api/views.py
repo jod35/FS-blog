@@ -1,6 +1,7 @@
 from flask import Blueprint,jsonify,make_response,request
 from main.utils.database import db
 from main.models.users import User,UserOutputSchema
+from main.models.posts import Post,PostOutputSchema
 
 api_bp=Blueprint('api_bp',__name__)
 ##########################
@@ -126,9 +127,19 @@ def delete_user(id):
 ####################################
 #####GET LIST OF POSTS #############
 ###################################
+
+post_schema=PostOutputSchema(many=True)
+
 @api_bp.route('/posts',methods=['GET'])
-def get_all_books():
-    pass
+def get_all_posts():
+    all_posts=Post.query.all()
+
+    posts=post_schema.dump(all_posts)
+
+    return make_response(
+        jsonify({"Success":True,
+                    "posts":posts})
+    )
 
 ####################################
 #####CREATE A BOOK #################
