@@ -1,5 +1,7 @@
 from main.utils.database import db
 from datetime import datetime
+from marshmallow_sqlalchemy import ModelSchema
+from marshmallow import fields
 
 class Post(db.Model):
     id=db.Column(db.Integer(),primary_key=True)
@@ -16,6 +18,14 @@ class Post(db.Model):
     def create(self):
         db.session.add(self)
         db.session.commit()
+
+
+class PostOutputSchema(ModelSchema):
+    class Meta(ModelSchema.Meta):
+        model=Post
+        sqla_session=db.session
+
+
 
 
 

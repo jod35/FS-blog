@@ -3,10 +3,19 @@ from main.utils.database import db
 from main.models.users import User,UserOutputSchema
 
 api_bp=Blueprint('api_bp',__name__)
+##########################
+###### WELCOME ###########
+##########################
+
 
 @api_bp.route('/')
 def hello():
     return make_response(jsonify({"message":"Hey Welcome to the blog API" }),200)
+
+
+##########################
+#####GET ALL USERS #######
+##########################
 
 @api_bp.route('/users',methods=['GET'])
 def get_all_users():
@@ -20,6 +29,9 @@ def get_all_users():
                                     "users":users
                                 }),201)
 
+###########################
+###CREATE NEW USER ########
+###########################
 @api_bp.route('/users',methods=['POST'])
 def create_new_user():
     data=request.get_json()
@@ -44,6 +56,9 @@ def create_new_user():
     )
 
 
+######################################
+#########GET SINGLE USER##############
+######################################
 @api_bp.route('/user/<id>',methods=['GET'])
 def get_single_user(id):
     single_user=User.query.get_or_404(id)
@@ -57,7 +72,9 @@ def get_single_user(id):
             "user":user,}
     ),200)
 
-
+######################################
+######CHANGE USERNAME ################
+######################################
 @api_bp.route('/user/<id>',methods=['PUT'])
 def update_user_info(id):
     data=request.get_json()
@@ -82,7 +99,9 @@ def update_user_info(id):
     )
 
 
-
+###############################
+###### DELETE USER ############
+###############################
 @api_bp.route('/user/<id>',methods=['DELETE'])
 def delete_user(id):
     user_to_delete=User.query.get_or_404(id)
@@ -97,3 +116,45 @@ def delete_user(id):
     )
 
 
+###########################################################################
+######### DONE WITH VIEWS FOR USERS :) ####################################
+###########################################################################
+
+################## POST VIEWS #############################################
+
+
+####################################
+#####GET LIST OF POSTS #############
+###################################
+@api_bp.route('/posts',methods=['GET'])
+def get_all_books():
+    pass
+
+####################################
+#####CREATE A BOOK #################
+####################################
+@api_bp.route('/posts',methods=['POST'])
+def create_post():
+    pass
+
+###################################
+######GET POST BY ID ##############
+###################################
+@api_bp.route('/post/<id>',methods=['GET'])
+def get_post(id):
+    pass
+
+
+###################################
+####### UPDATE post INFO###########
+###################################
+@api_bp.route('/post/<id>')
+def update_post(id):
+    pass
+
+###################################
+#####DELETE A POST ################
+###################################
+@api_bp.route('/post/<id>')
+def delete_post(id):
+    pass
