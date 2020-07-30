@@ -10,9 +10,10 @@ class Post(db.Model):
     user_id=db.Column(db.Integer,db.ForeignKey('user_table.id'))
     date_created=db.Column(db.DateTime(),default=datetime.utcnow)
 
-    def __init__(self,title,content):
+    def __init__(self,title,content,user_id=None):
         self.title =title
         self.content=content
+        self.user_id=user_id
         
 
     def create(self):
@@ -24,6 +25,9 @@ class PostOutputSchema(ModelSchema):
     class Meta(ModelSchema.Meta):
         model=Post
         sqla_session=db.session
+
+    title=fields.String(required=True)
+    content=fields.String(required=True)
 
 
 

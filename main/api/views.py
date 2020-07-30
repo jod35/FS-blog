@@ -146,7 +146,20 @@ def get_all_posts():
 ####################################
 @api_bp.route('/posts',methods=['POST'])
 def create_post():
-    pass
+    data=request.get_json()
+    schema=PostOutputSchema()
+    new_post=Post(title=data['title'],content=data['content'])
+    new_post.create()
+
+    post=schema.dump(new_post)
+
+    return make_response(
+        jsonify({"message":"New Post Created Successfully",
+                 "Success":True,
+                 "post":post})
+    )
+
+
 
 ###################################
 ######GET POST BY ID ##############
