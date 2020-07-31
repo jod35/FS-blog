@@ -1,3 +1,4 @@
+5685288 fix(remove jwt auth user create method)
 16b2bd6 fix(bug in JWT auth fucntion)
 620a476 add(added JWT authentication)
 a359bdb add(route to get posts of a user)

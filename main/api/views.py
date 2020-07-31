@@ -33,7 +33,7 @@ def get_all_users():
 ###########################
 ###CREATE NEW USER ########
 ###########################
-@api_bp.route('/users',methods=['POST'])
+@api_bp.route('/users/signup',methods=['POST'])
 def create_new_user():
     data=request.get_json()
 
