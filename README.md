@@ -31,7 +31,7 @@ The backend is a REST API that serves data as JSON to the client. It uses JSON W
 
 ### How to run the API
 #### 1. Get the project
-- ` $ git clone https://github.com/jod35/FS-Blog.git`
+### `$ git clone https://github.com/jod35/FS-Blog.git`
 
 #### 2. Install all dependencies
 ### ` $ cd FS-Blog `
