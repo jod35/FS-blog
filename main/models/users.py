@@ -8,7 +8,8 @@ class User(db.Model):
     __tablename__='user_table'
     id=db.Column(db.Integer,primary_key=True)
     username=db.Column(db.String(255),nullable=False)
-    email=db.Column(db.String(80),nullable=False)
+    email=db.Column(db.String(80),nullable=False,unique=True)
+    is_verified=db.Column(db.Boolean,default=False)
     passwd_hash=db.Column(db.Text,nullable=False)
     posts=db.relationship('Post',backref='author',lazy=True)
 
@@ -35,6 +36,11 @@ class User(db.Model):
     def delete(self):
         db.session.delete(self)
         db.session.commit()
+
+    @classmethod
+    def find_by_email(cls,email):
+        return cls.query.filter_by(email=email).first()
+
 
 class UserOutputSchema(ModelSchema):
     class Meta(ModelSchema.Meta):
