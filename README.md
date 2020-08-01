@@ -34,17 +34,23 @@ The backend is a REST API that serves data as JSON to the client. It uses JSON W
 - ` $ git clone https://github.com/jod35/FS-Blog.git`
 
 #### 2. Install all dependencies
-- ` $ cd FS-Blog `
-- ` $ pip3 install -r reuirements.txt `
+### ` $ cd FS-Blog `
+### ` $ pip3 install -r reuirements.txt `
 
 #### 3. Set Up the Database
 -  Use MySQL to create a database called 'mydb'
--  Edit ` main/config.py ` change your db credentials ` SQLALCHEMY_DATABASE_URI='mysql+pymysql://jona:<mydbusername>@localhost/mydb ` where `mydb` is the database and `mydbusername` is your database username.
--  Expose your app by running ` export FLASK_APP=run.py `
--  Create database tables ` flask db upgrade `
+-  Edit ` main/config.py ` change your db credentials 
+### ` SQLALCHEMY_DATABASE_URI='mysql+pymysql://jona:<mydbusername>@localhost/mydb ` 
+where `mydb` is the database and `mydbusername` is your database username.
+-  Expose your app by running 
+### ` export FLASK_APP=run.py `
+-  Create database tables 
+### ` flask db upgrade `
 
 #### 4. Start the App
-- ` flask run ` or `python3 run.py`
+### ` flask run ` 
+or 
+### `python3 run.py`
 
 
 ## Author
