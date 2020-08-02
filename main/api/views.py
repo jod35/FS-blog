@@ -35,6 +35,8 @@ def get_all_users():
 ###########################
 @api_bp.route('/users/signup',methods=['POST'])
 def create_new_user():
+    """    Create user endpoint    ---    parameters:- in: bodyname: bodyschema:id: UserSignuprequired:- username- password- emailproperties:username:type: stringdescription: Unique username of the userdefault: "Johndoe"password:type: stringdescription: Password of the user
+    127default: "somethingstrong"email:type: stringdescription: email of the userdefault: "someemail@provider.com"responses:201:description: User successfully createdschema:id: UserSignUpSchemaproperties:code:type: string422:description: Invalid input argumentsschema:id: invalidInputproperties:code:type: stringmessage:type: string"""
     data=request.get_json()
 
     new_user=User(username=data['username'],
@@ -55,7 +57,6 @@ def create_new_user():
                 "Success":True,
                 "user":user})
     )
-
 
 ######################################
 #########GET SINGLE USER##############

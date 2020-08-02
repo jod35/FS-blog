@@ -4,3 +4,5 @@ marshamallow-sqlalchemy
 flask-jwt-extended
 pymysql
 flask-migrate
+flask_swagger
+flask_swagger_ui

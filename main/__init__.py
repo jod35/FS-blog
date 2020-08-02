@@ -2,6 +2,8 @@ from flask import Flask,jsonify
 from .config import DevConfig
 from flask_jwt_extended import JWTManager
 from main.utils.database import db
+from flask_swagger import swagger
+from flask_swagger_ui import get_swaggerui_blueprint
 
 from flask_migrate import Migrate
 
@@ -30,6 +32,28 @@ def not_found(error):
 @app.errorhandler(500)
 def internal_error(error):
     return jsonify({"message":"Oops, Something went wrong!"})
+
+
+
+##########################
+# API SPECS ##############
+##########################
+
+@app.route('/api/spec')
+def spec():
+    swag=swagger(app,prefix='/api')
+    swag['info']['base']='http://localhost/5000'
+    swag['info']['version']='2.0'
+    swag['info']['title']='Flask Author DB'
+    return jsonify(swag)
+
+swagger_ui_blueprint=get_swaggerui_blueprint('/api/docs','/api/spec',config={'app_name':"Flask Author DB"})
+
+app.register_blueprint(swagger_ui_blueprint,url_prefix='/api/docs')
+
+
+
+
 
 from main.models.users import User as user_model
 from main.models.posts import Post as post_model
